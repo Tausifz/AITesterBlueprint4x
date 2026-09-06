@@ -1,0 +1,1 @@
+- Prefers plans and structured deliverables formatted using the RICE POT method (Role / Instructions / Context / Example / Parameters / Output / Tone). Confidence: 0.85
