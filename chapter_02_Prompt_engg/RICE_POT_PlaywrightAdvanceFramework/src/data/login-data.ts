@@ -19,12 +19,6 @@ export interface LoginData {
 const username = process.env.SALESFORCE_USERNAME ?? '';
 const password = process.env.SALESFORCE_PASSWORD ?? '';
 
-if (!username || !password) {
-  throw new Error(
-    'SALESFORCE_USERNAME and SALESFORCE_PASSWORD must be set in the environment.',
-  );
-}
-
 export const loginData: LoginData = {
   valid: { username, password },
   invalid: {

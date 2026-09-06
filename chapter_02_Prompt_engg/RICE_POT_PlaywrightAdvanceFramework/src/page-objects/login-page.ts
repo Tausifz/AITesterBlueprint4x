@@ -7,6 +7,9 @@ export class LoginPage {
   private readonly passwordInput: Locator;
   private readonly loginButton: Locator;
   private readonly rememberMeCheckbox: Locator;
+  private readonly authenticatedHome: Locator;
+  private readonly errorRegion: Locator;
+  private readonly fieldValidation: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -19,8 +22,19 @@ export class LoginPage {
     this.rememberMeCheckbox = page
       .getByRole('checkbox', { name: 'Remember me' })
       .or(page.locator('#rememberUn'));
+    this.authenticatedHome = page
+      .getByRole('navigation')
+      .or(page.locator('[class*="appLauncher"]'))
+      .first();
+    this.errorRegion = page
+      .locator('div#error, div.loginError, [role="alert"]')
+      .first();
+    this.fieldValidation = page.locator(
+      'input[aria-invalid="true"], [aria-describedby*="error"], .errorMsg',
+    ).first();
   }
 
+  /** Opens the Salesforce login page and waits for the username field. */
   async open(): Promise<void> {
     try {
       await this.page.goto('/?locale=in');
@@ -30,12 +44,14 @@ export class LoginPage {
     }
   }
 
+  /** Enters credentials and submits the login form. */
   async login(username: string, password: string): Promise<void> {
     await this.fillUsername(username);
     await this.fillPassword(password);
     await this.submit();
   }
 
+  /** Enters the supplied username. */
   async fillUsername(username: string): Promise<void> {
     try {
       await this.usernameInput.fill(username);
@@ -44,6 +60,7 @@ export class LoginPage {
     }
   }
 
+  /** Enters the supplied password. */
   async fillPassword(password: string): Promise<void> {
     try {
       await this.passwordInput.fill(password);
@@ -52,6 +69,7 @@ export class LoginPage {
     }
   }
 
+  /** Submits the login form. */
   async submit(): Promise<void> {
     try {
       await this.loginButton.click();
@@ -60,6 +78,7 @@ export class LoginPage {
     }
   }
 
+  /** Checks the Remember Me option. */
   async checkRememberMe(): Promise<void> {
     try {
       await this.rememberMeCheckbox.check();
@@ -68,11 +87,30 @@ export class LoginPage {
     }
   }
 
+  /** Returns whether the Remember Me option is selected. */
   async isRememberMeChecked(): Promise<boolean> {
     try {
       return await this.rememberMeCheckbox.isChecked();
     } catch (cause) {
       throw new LoginError('reading the remember me state', cause);
+    }
+  }
+
+  /** Returns whether the authenticated home landmark is visible. */
+  async isAuthenticatedHomeVisible(): Promise<boolean> {
+    try {
+      return await this.authenticatedHome.isVisible();
+    } catch (cause) {
+      throw new LoginError('reading the authenticated home state', cause);
+    }
+  }
+
+  /** Returns whether a form-level or field-level validation message is visible. */
+  async isValidationMessageVisible(): Promise<boolean> {
+    try {
+      return (await this.errorRegion.isVisible()) || (await this.fieldValidation.isVisible());
+    } catch (cause) {
+      throw new LoginError('reading the login validation state', cause);
     }
   }
 }

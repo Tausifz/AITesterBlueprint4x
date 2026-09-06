@@ -1,7 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { LoginPage } from '../../src/page-objects/login-page';
-import { loginData } from '../../src/data/login-data';
-import { expectErrorRegionVisible } from '../../src/utils/login-errors';
+import { LoginPage } from '../src/page-objects/login-page';
+import { loginData } from '../src/data/login-data';
 
 test.describe('Salesforce login - invalid credentials', () => {
   let loginPage: LoginPage;
@@ -23,7 +22,7 @@ test.describe('Salesforce login - invalid credentials', () => {
       loginData.invalid.wrongPassword.password,
     );
 
-    await expectErrorRegionVisible(page);
+    await expect.poll(() => loginPage.isValidationMessageVisible()).toBe(true);
     await expect(page).toHaveURL(/login/i);
   });
 
@@ -33,7 +32,7 @@ test.describe('Salesforce login - invalid credentials', () => {
       loginData.invalid.wrongUsername.password,
     );
 
-    await expectErrorRegionVisible(page);
+    await expect.poll(() => loginPage.isValidationMessageVisible()).toBe(true);
     await expect(page).toHaveURL(/login/i);
   });
 
@@ -43,7 +42,7 @@ test.describe('Salesforce login - invalid credentials', () => {
       loginData.invalid.emptyUsername.password,
     );
 
-    await expectErrorRegionVisible(page);
+    await expect.poll(() => loginPage.isValidationMessageVisible()).toBe(true);
     await expect(page).toHaveURL(/login/i);
   });
 
@@ -53,7 +52,7 @@ test.describe('Salesforce login - invalid credentials', () => {
       loginData.invalid.emptyPassword.password,
     );
 
-    await expectErrorRegionVisible(page);
+    await expect.poll(() => loginPage.isValidationMessageVisible()).toBe(true);
     await expect(page).toHaveURL(/login/i);
   });
 
@@ -63,7 +62,7 @@ test.describe('Salesforce login - invalid credentials', () => {
       loginData.invalid.emptyBoth.password,
     );
 
-    await expectErrorRegionVisible(page);
+    await expect.poll(() => loginPage.isValidationMessageVisible()).toBe(true);
     await expect(page).toHaveURL(/login/i);
   });
 });
