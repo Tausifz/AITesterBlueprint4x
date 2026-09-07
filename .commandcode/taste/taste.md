@@ -1,0 +1,6 @@
+- Works in QA/test engineering; prefers test deliverables (Test Plans, RTM, Test Cases, Risk Matrix, Regression Suites) to follow enterprise standards such as ISTQB, IEEE 829, and ISO 29119, with enterprise-grade/audit-ready tone. Confidence: 0.7
+- When producing deliverable files, prefers them to contain only the final output (e.g. Test Plan + Test Cases) without embedding the reusable prompt/template alongside it. Confidence: 0.7
+- For test case tables, prefers execution-tracking columns (e.g. Actual Result, Status, Executed By, Priority, Automated, PRD Traceability) initialized to "Not Executed"/"TBD" until actual QA execution. Confidence: 0.7
+- Prefers an anti-invention stance in test deliverables: explicitly document "Requirement Gaps" for details the source PRD does not specify, and use a test-data policy of not inventing credentials, limits, messages, or configurations. Confidence: 0.8
+- Prefers test cases to be PRD-driven, with each case tracing to the specific PRD area/section it verifies. Confidence: 0.7
+- Prefers test execution governance: run security/compliance/performance tests only in authorized environments, and mark a test "Blocked" rather than Pass/Fail when a required configuration is unavailable. Confidence: 0.6
