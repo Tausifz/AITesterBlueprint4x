@@ -1,2 +1,0 @@
-- Prefers plans and structured deliverables formatted using the RICE POT method (Role / Instructions / Context / Example / Parameters / Output / Tone). Confidence: 0.85
-- When output quality falls short, communicates expectations by providing a reference example and expects the deliverable to be reworked to match that example's quality and format. Confidence: 0.75
