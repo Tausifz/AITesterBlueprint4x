@@ -5,3 +5,15 @@ test-results/
 .env
 .env.*
 !.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local personal preferences
+.commandcode/taste/
+
+# Personal resume data and generated documents
+chapter_04_JobkitAI/resume-tailor/spec.json
+chapter_04_JobkitAI/resume-optimization/spec-test-automation-lead.json
+chapter_04_JobkitAI/resume-tailor/output_resume/
