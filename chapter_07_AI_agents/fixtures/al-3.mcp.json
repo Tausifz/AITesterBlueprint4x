@@ -1,0 +1,20 @@
+{
+  "key": "AL-3",
+  "id": "10009",
+  "summary": "Creating a Care Plan",
+  "issuetype": {"id": "10007", "name": "Story"},
+  "status": {"name": "To Do", "statusCategory": {"name": "To Do"}},
+  "priority": {"name": "Medium"},
+  "assignee": {"accountId": "sample-account-id", "displayName": "Sample User"},
+  "reporter": {"accountId": "sample-account-id", "displayName": "Sample User"},
+  "labels": [],
+  "components": [],
+  "fixVersions": [],
+  "subtasks": [],
+  "issuelinks": [],
+  "comments": [],
+  "customFields": {
+    "Rank": {"id": "customfield_10019", "value": "0|i0001o:"}
+  },
+  "transaction_source": "mcp_evidence_view"
+}

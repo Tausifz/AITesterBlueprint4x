@@ -1,0 +1,18 @@
+# .gitignore — Test Plan Creator (B.L.A.S.T. / A.N.T.)
+
+# Secrets
+.env
+
+# Intermediates (BLAST: use .tmp for all intermediate file operations)
+.tmp/*
+!.tmp/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
